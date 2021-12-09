@@ -1,0 +1,514 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+// == === == MIXIN == === ==
+@mixin Roboto {
+    font-family: 'Roboto', sans-serif;
+}
+// === HOVER MIXINS ===
+@mixin link-hover-black { 
+position: relative;
+padding-bottom: 8px;
+    
+font-size: 13px;
+letter-spacing: 1.4px;
+color: #000000;
+
+    &::before{
+        content: "";
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #000000;
+    
+        transform: scale(0);
+        transition: 0.2s;
+    }
+    &:hover::before{
+        transform: scale(1, 1);
+        transition: 0.2s;
+    }
+}
+
+@mixin link-hover-white {
+position: relative;
+padding-bottom: 8px;
+    
+font-size: 13px;
+letter-spacing: 1.4px;
+color: #ffffff;
+    
+    &::before{
+        content: "";
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #ffffff;
+    
+        transform: scale(0);
+        transition: 0.2s;
+    }
+    &:hover::before{
+        transform: scale(1, 1);
+        transition: 0.2s;
+    }
+}
+
+// === / HOVER MIXINS ===
+
+@mixin ib-block-bg ($padding, $text-align) {
+    padding: $padding;
+    text-align: $text-align;
+
+    .container-content{
+        position: relative;
+        z-index: 1;  
+        color: $white-text-color;
+    
+        &__title{
+            margin-bottom: 12px;
+          
+        }
+        &__text{
+            margin-bottom: 28px;
+            letter-spacing: $ls-main-text;
+            line-height: 17px;
+        }
+        &__link{
+            color: $white-text-color;
+            @include link-hover-white();
+        }  
+    }
+}
+ 
+
+// == === == / MIXIN == === ==
+
+// == === == VRIABLES == === ==
+
+$fw-regular: 400;
+
+$ls-main-text: 0.8px;
+$ls-second-text: 1.4px;
+
+$lh-slider-text: 21px;
+$lh-second1-text: 18px;
+$lh-main-text: 24px;
+$lh-main-title: 36px;
+$lh-second-title: 58px;
+
+$lh-little-link: 15,23px;
+$lh-big-link: 21px;
+ 
+$header-bg-color:#ffffff;
+$main-bg-color:#e5e5e5;
+$footer-bg-color:#f9f9f9;
+$to-footer-bg-color:#9AA8B1;
+
+$white-text-color:#ffffff;
+$black-text-color:#000000;
+$gray-text-color:#a0a0a0;
+$darkGray-text-color:#707a7f;
+
+
+$active-btn-color: #bd1919;
+
+h2{font-size:66px;}
+h3{font-size:43px;}
+h4{font-size:34px;}
+h5{font-size:30px;}
+h6{font-size:27px;}
+p {font-size:15px;}
+// == === == / VRIABLES == === ==
+
+// == === == COMMON == ===  ===
+body, 
+html{
+    height: 100%;
+}
+
+body{
+    @include Roboto();
+
+    font-weight: $fw-regular;
+    color: $black-text-color;
+}
+
+a{
+    text-decoration: none;
+}
+
+.wrapper-outer{
+    background-color: $main-bg-color;
+}
+
+.wrapper-inner{
+    max-width: 1340px;
+    width: 100%;
+    margin: 0 auto;
+}
+// == === == / COMMON == === ==
+
+// == === == HEADER == === ==
+.section-header{
+    background-color: $header-bg-color;  
+}
+.main-nav{
+    &__items{
+        height: 75px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__item{
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 33.33%;
+        &:nth-child(2){
+            justify-content: center;
+        }
+        &:last-child{
+            justify-content: end;
+        }
+    }
+
+    &__link{
+        @include link-hover-black (); 
+
+        color: $black-text-color;
+        margin: 0 24px;
+        margin-top: 5px; 
+    }
+}
+@media (max-width: 750px) {
+
+}
+// == === == / HEADER == === ==
+
+// == === == MAIN PAGE (section 1) == === ==
+.section-main-page{
+    @include ib-block-bg(193px 28.5px, center);
+}
+.wrapper-outer{
+    position: relative;
+}
+.container-bg{
+    &__img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0px;
+        object-fit: cover;
+    }
+}
+
+// == === == / MAIN PAGE (section 1) == === ==
+
+// == === == PRODUCT DESIGN (section 2) == === ==
+.section-product-design{
+    .title-container{
+        padding: 80px 0;
+        &__text{
+            margin-bottom: 26px;
+        }
+        &__link{
+            @include link-hover-black (); 
+
+            line-height: $lh-big-link;
+        }
+    }
+}
+//========= identical blocks =========
+.title-container{
+    width: 56%;
+    margin: 0 auto;
+    text-align: center;
+
+    &__title{
+        margin-bottom: 23px;
+        line-height: $lh-main-title;
+    }
+    &__text{
+        letter-spacing: $ls-main-text;
+        line-height: $lh-main-text;
+    }
+}
+@media (max-width: 750px) {
+    .title-container{
+        width: 80%;
+    }
+}
+//========= / identical blocks =========
+.block-grop{
+    display: flex;
+    column-gap: 25px;
+    text-align: center;
+    padding-bottom: 60px;
+    .block-pr-desing{
+        padding-bottom: 14px;
+        &__img{
+            width: 100%;
+            margin-bottom: 48px;
+        }
+        &__title{
+            margin-bottom: 23px;
+        }
+        &__link{
+            @include link-hover-black (); 
+        }
+    }   
+}
+@media (max-width: 750px) {
+    .block-grop{
+        flex-wrap: wrap;
+        padding-bottom: 60px;
+        .block-pr-desing{
+            padding-bottom: 50px;
+            &__img{
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+// == === == / PRODUCT DESIGN (section 2) == === ==
+
+// == === == FEATURED PRODUCTS (section 3) == === ==
+.section-featured-products{
+    text-align: center;
+    padding-bottom: 95px;
+    &__title{
+        line-height: $lh-main-title;
+    }
+    &__text{
+        margin: 16px 0 52px 0;
+        color: $gray-text-color;
+        letter-spacing: $ls-main-text;
+        line-height: $lh-second1-text;
+    }
+}
+.slider{
+    text-align: left;
+    // width: 1315px;
+    overflow: hidden;
+    
+    &__btns{
+        display: flex;
+        width: 70px;
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__btn1,
+    &__btn2,
+    &__btn3{
+        width: 12px;
+        height: 12px;
+        
+        background-color: #000000;
+        border: none;
+    }
+    &__items{
+        position: relative;
+        left: 0;
+        top: 0;
+        transition: all .5s ease-in-out;
+
+        width: 3945px;
+        margin-top: 24px;
+        display: flex;   
+    }
+    &__item:not(:last-child){
+        margin-right: 25px;
+        
+    }
+    &__text,
+    &__price{
+        color: $gray-text-color;
+        letter-spacing: $ls-main-text;
+        line-height: $lh-slider-text;
+        font-size: 13px;
+
+        margin-top: 23px;
+    }
+}
+.active{
+    background-color: $active-btn-color;
+}
+// == === == / FEATURED PRODUCTS (section 3) == === ==
+
+// == === == WORK FROM HOME (section 4) == === ==
+.section-work-from-home{
+    @include ib-block-bg(180px 28.5px, center);
+}
+// == === == / WORK FROM HOME (section 4) == === ==
+
+// == === == OUR WAY (section 5) == === ==
+.section-our-way{
+    padding-top: 120px;
+    
+
+    &__img{
+        display: block;
+        width: 100%;
+        max-width: 1052px;
+        margin: 40px auto 0 auto;
+    }
+    .title-container__text{
+        color: $gray-text-color;
+    }
+}
+@media (max-width: 750px){
+    .section-our-way{
+        padding-top: 60px;
+    }
+}
+// == === == / OUR WAY (section 5) == === ==
+
+// == === == ABOUT US (section 6) == === ==
+.section-about-us{
+    padding-top: 120px;
+
+    .title-container__text{
+        color: $gray-text-color;
+    }
+}
+
+.employee{
+    &__images{
+        margin: 40px auto 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 200px);
+        grid-column-gap: 25px;
+        grid-row-gap: 27px;
+    }
+}
+@media (max-width: 750px){
+    .section-about-us{
+        padding-top: 60px;
+    }
+}
+// == === == / ABOUT US (section 6) == === ==
+
+// == === == OUR HISTORY (section 7) == === ==
+.section-our-history{
+    padding: 125px 0 120px 0;
+}
+.our-history{
+    text-align: center;
+    &__title{
+        margin-bottom: 44px;
+        line-height: $lh-main-title;
+    }
+    &__link{
+        @include link-hover-black();
+        letter-spacing: $ls-second-text;
+        line-height: $lh-big-link;
+        
+    }
+}
+// == === == / OUR HISTORY (section 7) == === ==
+
+// == === == WORKPLACE (section 8) == === ==
+.section-workplace{
+    @include ib-block-bg(120px 0, center);
+    background-color: $to-footer-bg-color;
+    .container-content{
+        &__title{
+            margin: 24px 0;
+            line-height: $lh-second-title;
+        } 
+        &__text{
+            line-height: $lh-main-text;
+            letter-spacing: $ls-main-text;
+        } 
+    }
+}
+
+// == === == / WORKPLACE (section 8) == === ==
+
+// == === == FOOTER == === ==
+.section-footer{
+    background-color: $footer-bg-color;
+    margin-top: 40px;
+    padding-top: 77px;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 28px;
+}
+.footer-nav{
+    &__item:not(:last-child){
+        margin-bottom: 16px
+    }
+    &__link{
+        @include link-hover-black();
+
+        padding-bottom: 1px;
+        font-size: 22px; 
+    }
+}
+.footer-sign-up{
+    width: 400px;
+    &__title{
+        font-size: 28px;
+        line-height: $lh-main-text;
+      
+    }
+    &__text{
+        line-height: $lh-second1-text;
+        letter-spacing: $ls-main-text;
+        color: $gray-text-color;
+        margin: 23px 0 90px 0;
+    }
+    &__input{
+        width: 320px;
+        border: none;
+        border-bottom: 1px solid #000000;
+        background-color: transparent;
+       
+    }
+    
+}
+.footer-others{
+    &__items{
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-end;
+        justify-items: flex-end;  
+    }
+    &__item:not(:last-child){
+        margin-right: 38px;
+    }
+    &__link{
+        @include link-hover-black(); 
+    }
+}
+
+.footer-icon{
+    position: absolute;
+    cursor: pointer;
+    right: 50px;
+    bottom: 273px;
+
+    color: #ffffff;
+    background-color: #000000;
+    padding: 22px 30px 28px;
+    &__item{
+        line-height: 16px;
+        letter-spacing: $ls-main-text;
+    }
+}
+@media (max-width: 750px) {
+    .footer{
+        flex-wrap: wrap;
+    }
+}
+// == === == / FOOTER == === ==
